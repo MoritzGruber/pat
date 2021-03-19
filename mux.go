@@ -256,6 +256,8 @@ func (ph *patHandler) try(path string) (url.Values, bool) {
 	var i, j int
 	for i < len(path) {
 		switch {
+		case ph.pat == "*":
+			return p, true
 		case j >= len(ph.pat):
 			if ph.pat != "/" && len(ph.pat) > 0 && ph.pat[len(ph.pat)-1] == '/' {
 				return p, true
